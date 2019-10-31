@@ -2,7 +2,9 @@
 
 Problem: Given 2 array, check if the square of each value in array1 is present in array2. In case of repititions, check if the frequency is same too.
 
-Naive solution: Nested loop. O(n^2)
+Naive solution: 
+Nested loop. O(n^2).
+Used javascript splice method to remove number from Array2 - for frequency calculation.
 
 Better solution: O(n)
 
