@@ -65,7 +65,7 @@ var freqCounter1={}, freqCounter2={};
     for(var c of word1) {
         freqCounter1[c] = (freqCounter1[c] || 0 ) +1 
     }
-// Instead of creating a new variable and space for 2nd, we use the same to compare the individual characters in both (presence/absence) and for tracking frequency, we subtract from the counter at every occurence. 
+
     for(var c of word2) {
         if(!freqCounter1[c])
             return false;
@@ -81,5 +81,7 @@ var freqCounter1={}, freqCounter2={};
 
 validAnagram('aaz','azz');
 ```
+
+Instead of creating a new variable and space for 2nd, we use the same to compare the individual characters in both (presence/absence) and for tracking frequency, we subtract from the counter at every occurence. 
 
 ## Multiple pointers problem
