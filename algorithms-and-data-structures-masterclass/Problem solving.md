@@ -85,3 +85,35 @@ validAnagram('aaz','azz');
 Instead of creating a new variable and space for 2nd, we use the same to compare the individual characters in both (presence/absence) and for tracking frequency, we subtract from the counter at every occurence. 
 
 ## Multiple pointers problem
+
+## Sliding window problem
+
+Traverse through an array to find patterns/ substrings etc. Easy solution- nested loops.
+
+```
+var arr1 = [1,2,5,2,13,0,8,2,4,5,7,9,3,5,0,2,7,9,2,7,4]
+var number = 3, max = 0, temp=0;
+for (i=0; i< arr1.length - number; i++){
+temp=0
+    for (j=i; j< i+ number; j++)
+		temp+= arr1[j];
+	if(max <temp)
+	    max=temp;
+}
+```
+
+O(n) solution
+```
+var arr1 = [1,2,5,2,13,0,8,2,4,5,7,9,3,5,0,2,7,9,2,7,4]
+var number = 3, max = 0, temp=0;
+for (i=0; i< number; i++){
+    max+= arr1[i]
+}
+temp = max
+for (i=number; i< arr1.length; i++){
+    temp+= arr1[i] - arr1[i-number];
+	if(max <temp)
+	    max=temp;
+}
+```
+
