@@ -120,3 +120,6 @@ for (i=number; i< arr1.length; i++){
 ## Divide and Conquer problems
 
 Used in sorting and searching algos such as quick sort, binary search, binary trees etc. 
+
+Reduces time complexity.
+In BS, it reduced it to Log(N) from O(N)
