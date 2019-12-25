@@ -117,3 +117,6 @@ for (i=number; i< arr1.length; i++){
 }
 ```
 
+## Divide and Conquer problems
+
+Used in sorting and searching algos such as quick sort, binary search, binary trees etc. 
