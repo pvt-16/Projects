@@ -1,5 +1,9 @@
 ## React
 
+Two projects
+1. Tic tac toe from Reactjs.org
+2. Robo Friends app from Udemy
+
 To download react app template
 
 ```
