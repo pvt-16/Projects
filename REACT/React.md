@@ -8,11 +8,24 @@ React component class, or React component type-> lets you split the UI into inde
 Subclass-> React.Component or React.PureComponent.
 
 ### JSX
-JSX is a syntax extension to JavaScript. Looks like a template language, but it comes with the full power of JavaScript. JSX produces React “elements” which are then rendered to the DOM. Eg of JSX:
+JSX is a syntax extension to JavaScript. Looks like a template language, but it comes with the full power of JavaScript. JSX produces React “elements” which are then rendered to the DOM. Rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display. React doesn’t require using JSX, but it is helpful as a visual aid when working with UI inside the JavaScript code.  Eg of JSX in React:
 
 ```
-const element = <h1>Hello, world!</h1>;
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
 ```
+JSX:
+1. helps prevent XSS (cross-site-scripting) attacks as it doesn't inject anything that
+
+
+
+### React npm template
+
 To download react app template
 
 ```
