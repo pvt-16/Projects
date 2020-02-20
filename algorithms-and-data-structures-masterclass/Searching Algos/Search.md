@@ -1,10 +1,23 @@
 ## Binary search
 
+Time complexity - O(log n)
+
+```
+function binarySearch(array, value){
+  var start=0, end = array.length-1,middle = Math.floor((start+end)/2); 
+  while (array[middle]!= value) {
+    if(array[middle] > value)
+        end = middle -1;
+    else
+      start = middle+1;
+  }
+}
+```
 
 ```
 function binarySearch(array, value){
   var temp = recursiveBS(0, array.length-1, array, value);
-  console.log("temp " + temp);
+  console.log("Result: " + temp);
     return temp;
 }
 
