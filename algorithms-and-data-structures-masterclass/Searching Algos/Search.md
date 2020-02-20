@@ -1,6 +1,7 @@
 ## Binary search
 
-Time complexity - O(log n)
+Divide and Conquer approach. Linear Search - O(n)
+Time complexity for Binary Search - O(log n)
 
 16 elements -> Max 4 steps to be sure the value isn't there / index found.
 32 elems-> 5 steps.
