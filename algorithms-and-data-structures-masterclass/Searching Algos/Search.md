@@ -2,6 +2,10 @@
 
 Time complexity - O(log n)
 
+16 elements -> Max 4 steps to be sure the value isn't there / index found.
+32 elems-> 5 steps.
+Hence, O(log n)
+
 ```
 function binarySearch(array, value){
   var start=0, end = array.length-1,middle = Math.floor((start+end)/2); 
