@@ -2,8 +2,10 @@
 # Sorting Algorithms
 
  - [x] Bubble Sort
- - [ ] Selection Sort
- - [ ] Insertion Sort
+ - [x] Selection Sort
+ - [x] Insertion Sort
  - [ ] Merge Sort
  - [ ] Quick Sort
- - [ ] Radix
+ - [ ] Radix Sort
+
+ - [ ] Counting Sort
