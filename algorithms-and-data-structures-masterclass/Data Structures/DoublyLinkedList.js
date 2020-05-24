@@ -1,16 +1,17 @@
-//Linked List is a set of nodes. Pointing in one direction. 
+//DoublyLinkedList.js
 
-// Time Complexity
-// Insertion - O(1)
+//Doubly Linked List is a set of nodes. Pointing in two direction. 
+
 class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
+        this.prev = null;
     }
 
 }
 
-class LinkedList {
+class DoublyLinkedList {
 
     constructor() {
         this.head = null;
@@ -24,33 +25,24 @@ class LinkedList {
            this.head = this.tail = newNode;
         }
         else {
-           this.tail.next = newNode;
-           this.tail = newNode;
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
         }
         this.length++;
     }
 
     pop() {
-        // Time Complexity - O(1) or O(n) if end
-        if (this.head != null) {
-            var tempNode = this.head;
+        if (!   this.head) {
+
+            var tempNode = this.tail; length--;
             if (this.head == this.tail) {
                 this.head = this.tail = null;
-                return tempNode.value;
+            } else {
+                var newTailNode = this.tail.prev;
+                this.tail.prev = newTailNode.next = null;
+                this.tail = newTailNode;
             }
-
-            var prevNode = new Node();
-            while (tempNode.next!= null) {
-                prevNode = tempNode;
-                tempNode = tempNode.next;
-            }
-            
-            if (tempNode.tail == null) {
-                this.tail = prevNode;
-                this.tail.next = null;
-                this.length--;
-            }
-
             return tempNode.value;
         }
         return undefined;
@@ -58,9 +50,12 @@ class LinkedList {
     shift() {
         //Removing node from beginning
         if (this.head == null)  return undefined;
-        
         var tempNode = this.head;
-        this.head = tempNode.next;
+        if (this.length == 1) this.head = this.tail = null;
+        else {
+            this.head = tempNode.next;
+            tempNode.next = this.head.prev = null;
+        }
         this.length--; 
         return tempNode.value;
     }
@@ -70,18 +65,30 @@ class LinkedList {
         var newNode = new Node(value);
         if (this.head == null) 
             this.head = this.tail = newNode;
-        else
+        else {
+            
+            this.head.prev = newNode;
             newNode.next = this.head;
             this.head = newNode;
+        }
         this.length++;
         return newNode;
     }
 
     get(index) {
-        if ((index == 0 && this.head == null))  return undefined;
-        var tempNode = this.head;
-        while (index>0) {
-            tempNode = tempNode.next; index--;
+        if (index < 0 || this.head == null  || index >= this.length)  return undefined;
+        
+        if ( index > this.length/2) {
+            var tempNode = this.tail;
+            index = this.length -1 - index;
+            while (index>0) {
+                tempNode = tempNode.prev; index--;
+            }
+        } else {
+            var tempNode = this.head;
+            while (index>0) {
+                tempNode = tempNode.next; index--;
+            }
         }
         return tempNode;
     }
@@ -90,31 +97,35 @@ class LinkedList {
         var tempNode = this.get(index);
         if (tempNode == null) return undefined;
         tempNode.value = value;
-        return tempNode.value;
+        return true;
     }
 
     insert(index, value) {
         if (index < 0 || index> this.length) return false;
         if (index === 0)  return !!this.unshift(value); 
-        
+        if (index == this.length) return this.push(value);
+
         var prevNode = this.get(index-1);
         var newNode = new Node(value);
         newNode.next =prevNode.next;
-        if (prevNode) {
-            prevNode.next = newNode;
-        }
+        newNode.prev = prevNode;
+        prevNode.next = newNode;
+        newNode.next.prev = newNode;
         this.length++;
         return !!newNode;
 
     }
     remove (index) {
         if (index<0 || index> this.length) return;
-        if (index == this.length -1) return !!this.pop();
+        if (index == this.length-1) return !!this.pop();
         if (index == 0)
             return !!this.shift();
+
         var removeNode = this.get(index);
-        var prevNode = this.get(index-1);
+        var prevNode = removeNode.prev;
         prevNode.next = removeNode.next;
+        removeNode.next.prev = prevNode;
+        removeNode.prev = removeNode.next = null;
         this.length--;
         return true;
     }
@@ -148,15 +159,18 @@ class LinkedList {
     }
 }
 
-var ll = new LinkedList();
+var ll = new DoublyLinkedList();
 ll.push("f1");
 ll.push("f2");
 ll.push("f3");
-//console.log(ll.get(1).value);
+ll.push("f5");
+ll.unshift("f4");
+ll.print();
+console.log(ll.get(4).value);
 
-ll.insert(1,"f4");
+//ll.insert(1,"f4");
 // console.log(ll.get(0).value);
 // console.log(ll.get(1).value);
 // console.log(ll.get(2).value);
 //console.log(ll.get(3).value);
-ll.reverse();
+//ll.reverse();
